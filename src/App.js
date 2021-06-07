@@ -18,7 +18,7 @@ const LOCAL_STORAGE_KEY = "react-todo-list-todos";
  * @constructor
  */
 function App() {
-  // Get the first two elements of the array using Array Destructure Syntax
+  // Declare state variable for todos which provides two elements, the todos and the set function
   const [todos, setTodos] = useState([])
 
   // Populate the todos when the app initially renders

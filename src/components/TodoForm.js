@@ -14,8 +14,7 @@ function TodoForm({addTodo}) {
   const [todo, setTodo] = useState({
     id: "",
     task: "",
-    completed: false,
-    edit: false
+    completed: false
   });
 
   /**

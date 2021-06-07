@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from "uuid";
  * @returns {JSX.Element}
  * @constructor
  */
-function TodoForm({addTodo}) {
+function TodoForm(props) {
   // Define the variables containing the information of each todo
   const [todo, setTodo] = useState({
     id: "",
@@ -40,7 +40,7 @@ function TodoForm({addTodo}) {
     // Add new todo only if input is not empty
     if (todo.task.trim()) {
       // Add new todo using the provided information and the uuid package to create a unique id
-      addTodo({...todo, id: uuidv4()});
+      props.addTodo({...todo, id: uuidv4()});
 
       // Reset task input
       setTodo({...todo, task: ""});
@@ -49,16 +49,31 @@ function TodoForm({addTodo}) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        name="task"
-        type="text"
-        value={todo.task}
-        placeholder="Add a todo..."
-        onChange={handleTaskInputChange}
-      />
-      <button type="submit">submit</button>
+      {props.todo ? (
+        <div>
+          <input
+            name="task"
+            type="text"
+            value={props.todo.task}
+            placeholder="Edit the todo..."
+            onChange={handleTaskInputChange}
+          />
+          <button type="submit">edit</button>
+        </div>
+      ) : (
+        <div>
+          <input
+            name="task"
+            type="text"
+            value={todo.task}
+            placeholder="Add a todo..."
+            onChange={handleTaskInputChange}
+          />
+          <button type="submit">submit</button>
+        </div>
+      )}
     </form>
-  )
+  );
 }
 
 export default TodoForm;

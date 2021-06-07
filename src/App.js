@@ -18,7 +18,7 @@ const LOCAL_STORAGE_KEY = "react-todo-list-todos";
  * @constructor
  */
 function App() {
-  // Get the first two elements of the array using Array Destructure Syntax
+  // Declare state variable for todos which provides two elements, the todos and the set function
   const [todos, setTodos] = useState([])
 
   // Populate the todos when the app initially renders
@@ -48,12 +48,12 @@ function App() {
     setTodos([todo, ...todos]);
   }
 
-  function toggleEdit(id) {
+  function editTodo(id, editedTask) {
+    console.log("Klick");
     setTodos(
       todos.map(todo => {
-        if (todo.id === id) {
-          console.log(todo.task);
-          return {...todo, edit: !todo.edit};
+        if (editedTask.trim() && todo.id === id) {
+          return {...todo, task: editedTask}
         }
         return todo;
       })
@@ -96,7 +96,7 @@ function App() {
             i.e. a parent component like App can pass information to a child component like TodoForm, but not the other
             way around. Child components can only receive information from their parent component. */}
         <TodoForm addTodo={addTodo} />
-        <TodoList todos={todos} toggleComplete={toggleComplete} toggleEdit={toggleEdit} removeTodo={removeTodo} />
+        <TodoList todos={todos} toggleComplete={toggleComplete} editTodo={editTodo} removeTodo={removeTodo} />
       </header>
     </div>
   );

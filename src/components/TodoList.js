@@ -10,16 +10,16 @@ import Todo from "./Todo";
  * @returns {JSX.Element}
  * @constructor
  */
-function TodoList({ todos, toggleComplete, toggleEdit, removeTodo }) {
+function TodoList({ todos, toggleComplete, editTodo, removeTodo }) {
   return (
     <ul>
       {/* Here we are inserting JS to map over the list of todos. Note: When you render a JSX element from an array
           map each element should have a unique key attached to the parent element returned from the map. */}
       {todos.map(todo => (
-        <Todo key={todo.id} todo={todo} toggleComplete={toggleComplete} toggleEdit={toggleEdit} removeTodo={removeTodo} />
+        <Todo key={todo.id} todo={todo} toggleComplete={toggleComplete} editTodo={editTodo} removeTodo={removeTodo} />
       ))}
     </ul>
-  )
+  );
 }
 
 export default TodoList;

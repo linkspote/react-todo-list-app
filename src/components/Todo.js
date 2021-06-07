@@ -6,32 +6,26 @@ import TodoForm from "./TodoForm";
  *
  * @param todo
  * @param toggleComplete
+ * @param editTodo
  * @param removeTodo
  * @returns {JSX.Element}
  * @constructor
  */
-function Todo({ todo, toggleComplete, toggleEdit, removeTodo }) {
+function Todo({ todo, toggleComplete, editTodo, removeTodo }) {
   function handleCheckboxClick() {
     toggleComplete(todo.id);
   }
 
   function handleEditClick() {
-    toggleEdit(todo.id);
-  }
-
-  function handleEdit(e) {
-    e.preventDefault();
-    console.log(todo);
-    toggleEdit(todo.id);
+    editTodo(todo.id, todo.task);
   }
 
   function handleRemoveClick() {
     removeTodo(todo.id);
   }
 
-  if (todo.edit) {
-    return <TodoForm todo={todo} onSubmit={handleEdit} />;
-  }
+  if (todo.edit)
+    return <TodoForm todo={todo} />;
 
   return (
     /* If we would render the following three lines of code an error occurs telling us that adjacent JSX elements
@@ -43,7 +37,7 @@ function Todo({ todo, toggleComplete, toggleEdit, removeTodo }) {
     // <button>X</button>
 
     <li style={{ display: "flex" }}>
-      <input type="checkbox" onClick={handleCheckboxClick} checked={todo.completed} />
+      <input type="checkbox" onClick={handleCheckboxClick} defaultChecked={todo.completed} />
       {/* Here we are using a ternary expression to mark completed and uncompleted todos in different ways. */}
       <span style={{ color: "white", textDecoration: todo.completed ? "line-through" : null }}>
         {todo.task}

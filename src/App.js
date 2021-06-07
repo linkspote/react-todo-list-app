@@ -48,18 +48,6 @@ function App() {
     setTodos([todo, ...todos]);
   }
 
-  function toggleEdit(id) {
-    setTodos(
-      todos.map(todo => {
-        if (todo.id === id) {
-          console.log(todo.task);
-          return {...todo, edit: !todo.edit};
-        }
-        return todo;
-      })
-    );
-  }
-
   /**
    * Inverts the completion status of the todo with the provided id.
    *
@@ -96,7 +84,7 @@ function App() {
             i.e. a parent component like App can pass information to a child component like TodoForm, but not the other
             way around. Child components can only receive information from their parent component. */}
         <TodoForm addTodo={addTodo} />
-        <TodoList todos={todos} toggleComplete={toggleComplete} toggleEdit={toggleEdit} removeTodo={removeTodo} />
+        <TodoList todos={todos} toggleComplete={toggleComplete} removeTodo={removeTodo} />
       </header>
     </div>
   );

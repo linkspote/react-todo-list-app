@@ -10,27 +10,13 @@ import TodoForm from "./TodoForm";
  * @returns {JSX.Element}
  * @constructor
  */
-function Todo({ todo, toggleComplete, toggleEdit, removeTodo }) {
+function Todo({ todo, toggleComplete, removeTodo }) {
   function handleCheckboxClick() {
     toggleComplete(todo.id);
   }
 
-  function handleEditClick() {
-    toggleEdit(todo.id);
-  }
-
-  function handleEdit(e) {
-    e.preventDefault();
-    console.log(todo);
-    toggleEdit(todo.id);
-  }
-
   function handleRemoveClick() {
     removeTodo(todo.id);
-  }
-
-  if (todo.edit) {
-    return <TodoForm todo={todo} onSubmit={handleEdit} />;
   }
 
   return (
@@ -48,7 +34,6 @@ function Todo({ todo, toggleComplete, toggleEdit, removeTodo }) {
       <span style={{ color: "white", textDecoration: todo.completed ? "line-through" : null }}>
         {todo.task}
       </span>
-      <button onClick={handleEditClick}>edit</button>
       <button onClick={handleRemoveClick}>X</button>
     </li>
   );

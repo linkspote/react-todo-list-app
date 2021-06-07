@@ -1,3 +1,8 @@
+# Branch format
+* camelCase notation for the identifier, e.g. testEdit
+* International date format - mmddyyyy, e.g. 06072021
+* Contributors please add their username at the end, e.g. testEdit_06072021_anonymous
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

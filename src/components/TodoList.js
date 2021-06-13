@@ -1,5 +1,6 @@
 import React from "react";
 import Todo from "./Todo";
+import {Grid, Paper} from "@material-ui/core";
 
 /**
  * Renders the list of todos.
@@ -12,22 +13,26 @@ import Todo from "./Todo";
  */
 function TodoList({ todos, toggleTodo, removeTodo }) {
   return (
-    <div>
+    <React.Fragment>
       {/*
         * Here we are inserting JS to map over the list of todos and to provide an identifier for each element.
         * Note: When you render a JSX element from an array map each element should have a unique key attached to the
         *       parent element returned from the map.
         */}
       {todos.map((todo, index) => (
-        <Todo
-          key={index}
-          index={index}
-          todo={todo}
-          toggleTodo={toggleTodo}
-          removeTodo={removeTodo}
-        />
+        <Grid item xs={12}>
+          <Paper elevation={3}>
+            <Todo
+              key={index}
+              index={index}
+              todo={todo}
+              toggleTodo={toggleTodo}
+              removeTodo={removeTodo}
+            />
+          </Paper>
+        </Grid>
       ))}
-    </div>
+    </React.Fragment>
   );
 }
 

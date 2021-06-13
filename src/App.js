@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import './App.css';
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
-// TODO: Add Material UI
+import {Grid, Typography} from "@material-ui/core";
 
 // This key is used to identify the stored todos of this app
 const LOCAL_STORAGE_KEY = "react-todo-list-todos";
@@ -71,9 +71,11 @@ function App() {
   return (
     <div className="app">
       <div className="container">
-        <h1 className="text-center mb-4">Todo List</h1>
-        <TodoForm addTodo={addTodo} />
-        <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo} />
+        <Typography variant="h1" className="text-center mb-4">Todo List</Typography>
+        <Grid container spacing={2}>
+          <TodoForm addTodo={addTodo} />
+          <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo} />
+        </Grid>
       </div>
     </div>
   );

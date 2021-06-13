@@ -1,5 +1,7 @@
 // State is used here to keep track of the user input
 import React, { useState } from "react";
+import {Grid, IconButton, Input, InputAdornment} from "@material-ui/core";
+import {Add, Send} from "@material-ui/icons";
 
 /**
  * Renders the todo form to add one to the list.
@@ -29,20 +31,30 @@ function TodoForm({ addTodo }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label><b>Add Todo</b></label>
-        <input
+    <Grid item xs={12}>
+      <form onSubmit={handleSubmit}>
+        <Input
           type="text"
           className="input"
           value={value}
-          onChange={e => setValue(e.target.value)} // Updates the task when input changes
-          placeholder="Add new todo" />
-      </div>
-      <button type="submit">
-        Submit
-      </button>
-    </form>
+          onChange={e => setValue(e.target.value)}
+          placeholder="Walk the dog"
+          label="Add new todo"
+          startAdornment={
+            <InputAdornment position="start">
+              <Add />
+            </InputAdornment>
+          }
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton type="submit">
+                <Send />
+              </IconButton>
+            </InputAdornment>
+          }
+        />
+      </form>
+    </Grid>
   );
 }
 

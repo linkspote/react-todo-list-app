@@ -1,5 +1,5 @@
 import React from "react";
-import {Divider, Grid, IconButton, Typography} from "@material-ui/core";
+import {Divider, Grid, IconButton, Tooltip, Typography} from "@material-ui/core";
 import {Delete, Done} from "@material-ui/icons";
 
 /**
@@ -12,7 +12,7 @@ import {Delete, Done} from "@material-ui/icons";
  * @returns {JSX.Element}
  * @constructor
  */
-function Todo({ todo, index, toggleTodo, removeTodo }) {
+export default function Todo({ todo, index, toggleTodo, removeTodo }) {
 
   return (
     /* If we would render the following three lines of code an error occurs telling us that adjacent JSX elements
@@ -30,12 +30,18 @@ function Todo({ todo, index, toggleTodo, removeTodo }) {
       <Grid item>
         <Grid container alignItems="center">
           <Divider className="divider" orientation="vertical" flexItem />
-          <IconButton onClick={() => toggleTodo(index)}><Done /></IconButton>
-          <IconButton onClick={() => removeTodo(index)}><Delete /></IconButton>
+          <Tooltip title={todo.isDone ? "Undone" : "Done"}>
+            <IconButton onClick={() => toggleTodo(index)} color="primary">
+              <Done />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Remove">
+            <IconButton onClick={() => removeTodo(index)} color="secondary">
+              <Delete />
+            </IconButton>
+          </Tooltip>
         </Grid>
       </Grid>
     </Grid>
   );
 }
-
-export default Todo;

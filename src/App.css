@@ -1,6 +1,9 @@
 .app {
   padding: 30px;
-  text-align: center;
+}
+
+.todo-form {
+  padding: 8px 16px;
 }
 
 .todo {

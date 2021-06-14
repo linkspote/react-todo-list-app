@@ -11,7 +11,7 @@ import {Grid, Paper} from "@material-ui/core";
  * @returns {JSX.Element}
  * @constructor
  */
-function TodoList({ todos, toggleTodo, removeTodo }) {
+export default function TodoList({ todos, toggleTodo, removeTodo }) {
   return (
     <React.Fragment>
       {/*
@@ -20,10 +20,9 @@ function TodoList({ todos, toggleTodo, removeTodo }) {
         *       parent element returned from the map.
         */}
       {todos.map((todo, index) => (
-        <Grid item xs={12}>
+        <Grid item xs={12} key={index}>
           <Paper elevation={3}>
             <Todo
-              key={index}
               index={index}
               todo={todo}
               toggleTodo={toggleTodo}
@@ -35,5 +34,3 @@ function TodoList({ todos, toggleTodo, removeTodo }) {
     </React.Fragment>
   );
 }
-
-export default TodoList;

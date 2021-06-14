@@ -71,8 +71,8 @@ function App() {
   return (
     <div className="app">
       <div className="container">
-        <Typography variant="h1" className="text-center mb-4">Todo List</Typography>
-        <Grid container spacing={2}>
+        <Typography variant="h2" component="h1" align="center">Todo List</Typography>
+        <Grid container spacing={2} justify="center">
           <TodoForm addTodo={addTodo} />
           <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo} />
         </Grid>

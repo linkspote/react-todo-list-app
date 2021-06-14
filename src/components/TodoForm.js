@@ -1,7 +1,7 @@
 // State is used here to keep track of the user input
-import React, { useState } from "react";
-import {Grid, IconButton, Input, InputAdornment} from "@material-ui/core";
-import {Add, Send} from "@material-ui/icons";
+import React, {useState} from "react";
+import {FormControl, Grid, IconButton, Input, InputAdornment, InputLabel, Paper, Tooltip} from "@material-ui/core";
+import {Add} from "@material-ui/icons";
 
 /**
  * Renders the todo form to add one to the list.
@@ -31,29 +31,32 @@ function TodoForm({ addTodo }) {
   };
 
   return (
-    <Grid item xs={12}>
-      <form onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          className="input"
-          value={value}
-          onChange={e => setValue(e.target.value)}
-          placeholder="Walk the dog"
-          label="Add new todo"
-          startAdornment={
-            <InputAdornment position="start">
-              <Add />
-            </InputAdornment>
-          }
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton type="submit">
-                <Send />
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-      </form>
+    <Grid item xs={4}>
+      <Paper component="form" onSubmit={handleSubmit} className="todo-form">
+        <FormControl fullWidth>
+          <InputLabel htmlFor="input-todo">Add new todo</InputLabel>
+          <Input
+            id="input-todo"
+            type="text"
+            className="input"
+            value={value}
+            onChange={e => setValue(e.target.value)}
+            placeholder="Walk the dog"
+            endAdornment={
+              <InputAdornment position="end">
+                <Tooltip title="Add new todo">
+                  <IconButton type="submit" color="primary">
+                    <Add />
+                  </IconButton>
+                </Tooltip>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
+      </Paper>
+      {/*<form onSubmit={handleSubmit}>*/}
+
+      {/*</form>*/}
     </Grid>
   );
 }

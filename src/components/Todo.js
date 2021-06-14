@@ -13,7 +13,6 @@ import {Delete, Done} from "@material-ui/icons";
  * @constructor
  */
 export default function Todo({ todo, index, toggleTodo, removeTodo }) {
-
   return (
     /* If we would render the following three lines of code an error occurs telling us that adjacent JSX elements
        must be wrapped in an enclosing tag and that we could use a React Fragment to solve this problem.

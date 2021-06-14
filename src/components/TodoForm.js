@@ -14,22 +14,6 @@ function TodoForm({ addTodo }) {
   // Define the variables containing the information of each todo
   const [value, setValue] = useState("");
 
-  /**
-   * Adds a new todo to the list.
-   *
-   * @param e
-   */
-  const handleSubmit = e => {
-    // Prevents the default behaviour of the event target which would be a page reload
-    e.preventDefault();
-
-    // Only add new todo if input is not empty
-    if (value.trim()) addTodo(value);
-
-    // Reset input field
-    setValue("");
-  };
-
   return (
     <Grid item xs={4}>
       <Paper component="form" onSubmit={handleSubmit} className="todo-form">
@@ -40,7 +24,6 @@ function TodoForm({ addTodo }) {
             type="text"
             className="input"
             value={value}
-            onChange={e => setValue(e.target.value)}
             placeholder="Walk the dog"
             endAdornment={
               <InputAdornment position="end">

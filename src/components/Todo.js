@@ -1,6 +1,5 @@
 import React from "react";
-import {Divider, Grid, IconButton, Tooltip, Typography} from "@material-ui/core";
-import {Delete, Done} from "@material-ui/icons";
+import {Divider, Grid, Typography} from "@material-ui/core";
 
 /**
  * Renders a todo from the list and handles its actions.
@@ -12,7 +11,7 @@ import {Delete, Done} from "@material-ui/icons";
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Todo({ todo, index, toggleTodo, removeTodo }) {
+export default function Todo({ todo }) {
   return (
     /* If we would render the following three lines of code an error occurs telling us that adjacent JSX elements
        must be wrapped in an enclosing tag and that we could use a React Fragment to solve this problem.
@@ -29,16 +28,7 @@ export default function Todo({ todo, index, toggleTodo, removeTodo }) {
       <Grid item>
         <Grid container alignItems="center">
           <Divider className="divider" orientation="vertical" flexItem />
-          <Tooltip title={todo.isDone ? "Undone" : "Done"}>
-            <IconButton onClick={() => toggleTodo(index)} color="primary">
-              <Done />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Remove">
-            <IconButton onClick={() => removeTodo(index)} color="secondary">
-              <Delete />
-            </IconButton>
-          </Tooltip>
+
         </Grid>
       </Grid>
     </Grid>

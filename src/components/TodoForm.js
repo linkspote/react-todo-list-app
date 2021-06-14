@@ -54,9 +54,6 @@ function TodoForm({ addTodo }) {
           />
         </FormControl>
       </Paper>
-      {/*<form onSubmit={handleSubmit}>*/}
-
-      {/*</form>*/}
     </Grid>
   );
 }
